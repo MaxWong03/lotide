@@ -1,9 +1,3 @@
-//check if an array is empty
-const isEmptyArr = (arr) => {
-  let isEmpty = false;
-  arr.length === 0 ? isEmpty = true : isEmpty = false;
-  return isEmpty;
-};
 
 const isSameLengthArr = (arr1, arr2) => {
   let isSameLength = false;
@@ -17,8 +11,6 @@ const isSameLengthArr = (arr1, arr2) => {
 const eqArrays = (arr1, arr2) => {
   //if no arrgument or only 1 arrugemnt, return false
   if (arr1 === undefined || arr2 === undefined) {
-    return false;
-  } else if (isEmptyArr(arr1) || isEmptyArr(arr2)) { //if one of the array is empty, return false
     return false;
   } else if (!isSameLengthArr(arr1, arr2)) { //if 2 arrays are not of the same length, return false
     return false;
