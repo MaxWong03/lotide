@@ -26,14 +26,13 @@ const countOnly = function(allItems, itemsToCount) {
   let result = {};
   for (let items of allItems) {
     if (itemsToCount[items]) {
-      if (result[items]) {//if there already is a count
-        result[items] += 1;
-      } else { //init the count
+      if (!result[items]) {
         result[items] = 1;
+      } else {
+        result[items]++;
       }
     }
   }
-  console.log(result);
   return result;
 };
 

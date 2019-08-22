@@ -9,6 +9,3 @@ const assertEqual = (actual, expected) => {
 
 };
 
-//test code
-assertEqual('Bootcamp', 'Bootcamp');
-assertEqual(1,3);

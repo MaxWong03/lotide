@@ -56,7 +56,7 @@ const eqObjects = (obj1, obj2) => {
 const assertObjectsEqual = (actual, expected) => {
   const inspect = require('util').inspect;//import libraries 
   let displayMessage;
-  eqObjects(actual,expected)? displayMessage = `✅✅✅ Assertion Passed: ${inspect(actual)} === ${inspect(expected)}` : displayMessage = `🔴🔴🔴 Assertion Failed: ${inspect(actual)} === ${inspect(expected)}`;
+  eqObjects(actual,expected)? displayMessage = `✅✅✅ Assertion Passed: ${inspect(actual)} === ${inspect(expected)}` : displayMessage = `🔴🔴🔴 Assertion Failed: ${inspect(actual)} !== ${inspect(expected)}`;
   console.log(displayMessage);
 };
 

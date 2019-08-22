@@ -1,4 +1,4 @@
-//assertEqual 
+//assertEqual
 
 // function implementation
 const assertEqual = (actual, expected) => {
@@ -13,7 +13,7 @@ const assertEqual = (actual, expected) => {
 
 
 
-//end of assertEqual 
+//end of assertEqual
 
 //head
 const head = (arr) => {
