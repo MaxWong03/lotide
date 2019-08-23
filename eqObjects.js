@@ -104,27 +104,21 @@ const eqObjects = (obj1, obj2) => {
   if (!isSameLengthArr(keyArr1,keyArr2)) { //if they dont have the same # of keys
     return false; //base case
   }
-  //{item}{item}
-  for (let key of keyArr1) {
+  if (!keyArr1.length) { //base case, if the obj has no key, we are done
+    return true;
+  } else { //recursive case
+    let key = keyArr1.shift(); //take an elemnent out of the key array
     let obj1El = obj1[key];
     let obj2El = obj2[key];
-    if (isArrays(obj1El, obj2El)) { //both are array
-      //if they are equal to each other, do nothing (loop through the rest of the key), else, return false
-      if (!eqArrays(obj1El, obj2El)) {
-        return false;
-      }
-    } else if (isObjects(obj1El, obj2El)) {// both are objects
-      //if they are equal to each other, do nothing(loop through the rest of the keys), else, return false
-      if (!eqObjects(obj1El, obj2El)) {
-        return false;
-      }
+    if (isArrays(obj1El, obj2El)) { //if both key values are array, base case
+      if (!eqArrays(obj1El, obj2El)) return false; //we check if they are identical array
+    } else if (isObjects(obj1El, obj2El)) { //if both values are object, recursive case
+      if (!eqObjects(obj1El, obj2El)) return false; //we recursively run the function and check if they are identical object
     } else {
-      if (obj1El !== obj2El) {
-        return false;
-      }
+      if (obj1El !== obj2El) return false; //check both key values, base case
     }
+    return eqObjects(obj1El, obj2El); //recursive case, check they rest of the key values of objecst
   }
-  return true;
 
 };
 
