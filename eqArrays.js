@@ -65,22 +65,31 @@ const eqArrays = (arr1, arr2) => {
   if (!isSameLengthArr(arr1, arr2)) {//base case, terminate recursion
     return false;
   } else { //they are of the same length
-    for (let i = 0; i < arr1.length; i++) { //recursive case
-      let arrItem1 = arr1[i];
-      let arrItem2 = arr2[i];
-      if (isArrays(arrItem1, arrItem2)) { //if they are both arrays
-        if (!eqArrays(arrItem1, arrItem2)) { //and if they dont equal to each other
-          return false;
-        }
+    // for (let i = 0; i < arr1.length; i++) { //recursive case
+    //   let arrItem1 = arr1[i];
+    //   let arrItem2 = arr2[i];
+    //   if (isArrays(arrItem1, arrItem2)) { //if they are both arrays
+    //     if (!eqArrays(arrItem1, arrItem2)) return false;//and if they dont equal to each other
+    //   } else {
+    //     //check item1 with item2, this will cover the case in which only one of the items is array
+    //     if (arrItem1 !== arrItem2) return false;
+    //   }
+    // }
+    if (!arr1.length) {
+      return true;
+    } else {
+      let arrItem1 = arr1.shift();
+      let arrItem2 = arr2.shift();
+      if (isArrays(arrItem1, arrItem2)) {
+        if (!eqArrays(arrItem1, arrItem2)) return false;
+        return eqArrays(arr1, arr2);
       } else {
-        //check item1 with item2, this will cover the case in which only one of the items is array
-        if (arrItem1 !== arrItem2) {
-          return false;
-        }
+        if (arrItem1 !== arrItem2) return false;
+        return eqArrays(arr1, arr2);
       }
     }
   }
-  return true;
+
 };
 
 
