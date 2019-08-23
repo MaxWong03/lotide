@@ -104,21 +104,27 @@ const eqObjects = (obj1, obj2) => {
   if (!isSameLengthArr(keyArr1,keyArr2)) { //if they dont have the same # of keys
     return false; //base case
   }
-  if (!keyArr1.length) { //base case, if the obj has no key, we are done
-    return true;
-  } else { //recursive case
-    let key = keyArr1.shift(); //take an elemnent out of the key array
+  for (let key of keyArr1) {
     let obj1El = obj1[key];
     let obj2El = obj2[key];
-    if (isArrays(obj1El, obj2El)) { //if both key values are array, base case
-      if (!eqArrays(obj1El, obj2El)) return false; //we check if they are identical array
-    } else if (isObjects(obj1El, obj2El)) { //if both values are object, recursive case
-      if (!eqObjects(obj1El, obj2El)) return false; //we recursively run the function and check if they are identical object
+    if (isArrays(obj1El, obj2El)) { //both are array
+      //if they are equal to each other, do nothing (loop through the rest of the key), else, return false
+      if (!eqArrays(obj1El, obj2El)) {
+        return false;
+      }
+    } else if (isObjects(obj1El, obj2El)) {// both are objects
+      //if they are equal to each other, do nothing(loop through the rest of the keys), else, return false
+      if (!eqObjects(obj1El, obj2El)) {
+        return false;
+      }
     } else {
-      if (obj1El !== obj2El) return false; //check both key values, base case
+      if (obj1El !== obj2El) {
+        return false;
+      }
     }
-    return eqObjects(obj1El, obj2El); //recursive case, check they rest of the key values of objecst
   }
+  return true;
+  
 
 };
 
@@ -163,5 +169,5 @@ const eqObjects = (obj1, obj2) => {
 
 assertEqual(eqObjects({ a: { z: 1 }, b: 2 }, { a: { z: 1 }, b: 2 }), true); // => true
 
-assertEqual(eqObjects({ a: { y: 0, z: 1 }, b: {j:2} }, { a: { y: 0, z: 1 }, b: {j:2} }), true); // => false
+assertEqual(eqObjects({ a: { y: 0, z: 1 }, b: {j:2} }, { a: { y: 0, z: 1 }, b: {j:3} }), false); // => false
 assertEqual(eqObjects({ a: { y: 0, z: 1 }, b: 2 }, { a: 1, b: 2 }), false); // => false
