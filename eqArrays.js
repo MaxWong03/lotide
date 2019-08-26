@@ -1,13 +1,5 @@
 // assertEqual
-const assertEqual = (actual, expected) => {
-  if (actual === expected) {
-    console.log(`✅✅✅ Assertion Passed: ${actual} === ${expected}`);
-  } else {
-    console.log(`🔴🔴🔴 Assertion Failed: ${actual} !== ${expected}`);
-
-  }
-
-};
+const assertEqual = require('./assertEqual');
 
 //end of assertEqual
 const isSameLengthArr = (arr1, arr2) => {
@@ -81,35 +73,7 @@ const eqArrays = (arr1, arr2) => {
 
 };
 
-
-// const eqArrays = (arr1, arr2) => {
-//   //if no arrgument or only 1 arrugemnt, return false
-//   if (arr1 === undefined || arr2 === undefined) {
-//     return false;
-//   }  else if (!isSameLengthArr(arr1, arr2)) { //if 2 arrays are not of the same length, return false
-//     return false;
-//   } else { //check if two arr is equal
-//     for (let [index, val] of arr1.entries()) {
-//       if (val !== arr2[index]) {
-//         return false;
-//       }
-//     }
-
-//   }
-
-//   return true;
-// };
-  
-
-
-//test cases
-// assertEqual(eqArrays([1, 2, 3], [1, 2, 3]), true);
-// assertEqual(eqArrays([1, 2, 3], [3, 2, 1]), false);
-// assertEqual(eqArrays(["1", "2", "3"], ["1", "2", "3"]), true);
-// assertEqual(eqArrays(["1", "2", "3"], ["1", "2", 3]), false);
-
-
-assertEqual(eqArrays([[2, 3], [4]], [[2, 3], [4]]), true);// => true
-assertEqual(eqArrays([[2, 3], [4]], [[2, 3], [4, 5]]), false);// => false
-assertEqual(eqArrays([[2, 3], [4]], [[2, 3], 4]), false);// => false
-assertEqual(eqArrays([1,[[2]],[[3],[4]]], [1,[[2]],[[3],[4]]]), true);
+module.exports = {
+  assertEqual,
+  eqArrays
+};
