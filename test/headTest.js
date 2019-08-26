@@ -4,7 +4,7 @@ const head = require('../src/head');
 describe('#head', () => {
   it('should return undefined if input array is empty', () => {
     const arr = [];
-    assert.strictEqual(head(arr), undefined);
+    assert.isUndefined(head(arr), undefined);
   });
   it('should return "Hello" if input array is ["Hello", "Lighthouse", "Labs"]', () => {
     const arr = ["Hello", "Lighthouse", "Labs"];
