@@ -1,5 +1,5 @@
 const assert = require('chai').assert;
-const head = require('../head');
+const head = require('../src/head');
 
 describe('#head', () => {
   it('should return undefined if input array is empty', () => {

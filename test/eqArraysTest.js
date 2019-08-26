@@ -1,4 +1,4 @@
-const test = require('../eqArrays');
+const test = require('../src/eqArrays');
 
 //test case
 test.assertEqual(test.eqArrays([1, 2, 3], [1, 2, 3]), true);

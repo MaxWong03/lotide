@@ -1,5 +1,5 @@
-const tail = require('../tail'); //importing tail
-const assertEqual = require('../assertEqual');
+const tail = require('../src/tail'); //importing tail
+const assertEqual = require('../src/assertEqual');
 
 //test case
 const words = ["Yo Yo", "Lighthouse", "Labs"];
