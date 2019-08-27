@@ -17,13 +17,7 @@ describe('flatten', () => {
   it('Throw an error if the input is not an array', () => {
     assert.throws(() => flatten('string'), Error);
   });
-})
-
-
-/*
-it ('', () => {
-
 });
-*/
+
 
 

@@ -9,7 +9,6 @@ const flatten = (sourceArr) => {
   for (let el of sourceArr) {
     if (isArrayType(el)) {
       for (let item of el) {
-        debugger;
         newArr.push(item);
       }
     } else {
@@ -18,6 +17,7 @@ const flatten = (sourceArr) => {
   }
   return newArr;
 };
+
 
 
 module.exports = flatten;
