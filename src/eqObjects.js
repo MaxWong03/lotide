@@ -1,13 +1,4 @@
-// function implementation
-const assertEqual = (actual, expected) => {
-  if (actual === expected) {
-    console.log(`✅✅✅ Assertion Passed: ${actual} === ${expected}`);
-  } else {
-    console.log(`🔴🔴🔴 Assertion Failed: ${actual} !== ${expected}`);
 
-  }
-
-};
 
 const isSameLengthArr = (arr1, arr2) => {
   let isSameLength = false;
@@ -100,6 +91,7 @@ const isObjects = (obj1, obj2) => {
 
 
 const eqObjects = (obj1, obj2) => {
+  if (!obj1 || !obj2) return undefined;
   const [keyArr1, keyArr2] = [Object.keys(obj1), Object.keys(obj2)];
   if (!isSameLengthArr(keyArr1,keyArr2)) { //if they dont have the same # of keys
     return false; //base case
@@ -167,7 +159,9 @@ const eqObjects = (obj1, obj2) => {
 
 
 
-assertEqual(eqObjects({ a: { z: 1 }, b: 2 }, { a: { z: 1 }, b: 2 }), true); // => true
+// assertEqual(eqObjects({ a: { z: 1 }, b: 2 }, { a: { z: 1 }, b: 2 }), true); // => true
 
-assertEqual(eqObjects({ a: { y: 0, z: 1 }, b: {j:2} }, { a: { y: 0, z: 1 }, b: {j:3} }), false); // => false
-assertEqual(eqObjects({ a: { y: 0, z: 1 }, b: 2 }, { a: 1, b: 2 }), false); // => false
+// assertEqual(eqObjects({ a: { y: 0, z: 1 }, b: {j:2} }, { a: { y: 0, z: 1 }, b: {j:3} }), false); // => false
+// assertEqual(eqObjects({ a: { y: 0, z: 1 }, b: 2 }, { a: 1, b: 2 }), false); // => false
+
+module.exports = eqObjects;
