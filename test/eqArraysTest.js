@@ -1,13 +1,32 @@
-const test = require('../src/eqArrays');
+const assert = require('chai').assert;
+const eqArrays = require('../src/eqArrays');
 
-//test case
-test.assertEqual(test.eqArrays([1, 2, 3], [1, 2, 3]), true);
-test.assertEqual(test.eqArrays([1, 2, 3], [3, 2, 1]), false);
-test.assertEqual(test.eqArrays(["1", "2", "3"], ["1", "2", "3"]), true);
-test.assertEqual(test.eqArrays(["1", "2", "3"], ["1", "2", 3]), false);
-
-
-test.assertEqual(test.eqArrays([[2, 3], [4]], [[2, 3], [4]]), true);// => true
-test.assertEqual(test.eqArrays([[2, 3], [4]], [[2, 3], [4, 5]]), false);// => false
-test.assertEqual(test.eqArrays([[2, 3], []], [[2, 3], []]), true);// => false
-test.assertEqual(test.eqArrays([1,[[2]],[[3],[4]]], [1,[[2]],[[3],[4]]]), true);
+describe('eqArrays(arrayActual, arrayExpected)', () => {
+  it('should return true when passed [1, 2, 3] and [1, 2, 3]', () => {
+    assert.isTrue(eqArrays([1, 2, 3], [1, 2, 3]));
+  });
+  it('should return false when passed [1, 2, 3] and [1, 2, 3, 4]', () => {
+    assert.isFalse(eqArrays([1, 2, 3], [1, 2, 3, 4]));
+  });
+  it('should return true when passed [1, [2, 3], 4, [5]] and [1, [2, 3], 4, [5]]', () => {
+    assert.isTrue(eqArrays([1, [2, 3], 4, [5]], [1, [2, 3], 4, [5]]));
+  });
+  it('should return false when passed [1, [2, 3], 4, [5]] and [1, [2, 3, 4], [5]]', () => {
+    assert.isFalse(eqArrays([1, [2, 3], 4, [5]], [1, [2, 3, 4], [5]]));
+  });
+  it('should return true when passed [] and []', () => {
+    assert.isTrue(eqArrays([], []));
+  });
+  it('should return false if passed [1, 2, 3] and 1', () => {
+    assert.isFalse(eqArrays([1, 2, 3], 1));
+  });
+  it('should return false if passed 1 and [1, 2, 3]', () => {
+    assert.isFalse(eqArrays(1, [1, 2, 3]));
+  });
+  it('should return undefined if only passed one array', () => {
+    assert.isUndefined(eqArrays([1, 2, 3]));
+  });
+  it('should return undefined passed nothing', () => {
+    assert.isUndefined(eqArrays());
+  });
+});
